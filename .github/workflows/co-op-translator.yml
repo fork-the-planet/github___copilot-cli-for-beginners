@@ -10,8 +10,7 @@ on:
       - "**/*.png"
       - "**/*.jpg"
       - "**/*.jpeg"
-      - "**/*.gif"
-      - "**/*.svg"
+      - "**/*.webp"
       - "!translations/**"
       - "!translated_images/**"
       - "!.github/**"
@@ -24,6 +23,7 @@ jobs:
   translate-content:
     name: Translate Markdown and Images
     runs-on: ubuntu-latest
+    timeout-minutes: 90
 
     env:
       TRANSLATION_LANGUAGES: "es"
@@ -56,9 +56,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install co-op-translator
 
-      - name: Translate Markdown and images
+      - name: Translate Markdown
         run: |
-          translate -l "$TRANSLATION_LANGUAGES" -md -img -y --repo-url "https://github.com/github/copilot-cli-for-beginners.git"
+          translate -l "$TRANSLATION_LANGUAGES" -md -y -s --repo-url "https://github.com/github/copilot-cli-for-beginners.git"
+
+      - name: Translate images
+        run: |
+          translate -l "$TRANSLATION_LANGUAGES" -img -y -s --repo-url "https://github.com/github/copilot-cli-for-beginners.git"
 
       - name: Normalize and review translations
         run: |
@@ -69,6 +73,14 @@ jobs:
           else
             echo "co-op-review is not available in the installed Co-op Translator package; skipping."
           fi
+
+      - name: Upload Co-op Translator logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: co-op-translator-logs
+          path: logs/
+          if-no-files-found: ignore
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
