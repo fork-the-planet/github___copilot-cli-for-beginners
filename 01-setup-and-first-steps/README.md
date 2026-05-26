@@ -417,7 +417,6 @@ That's it for getting started! As you become comfortable, you can explore additi
 | `/pr` | Operate on pull requests for the current branch |
 | `/research` | Run deep research investigation using GitHub and web sources |
 | `/review` | Run the code-review agent to analyze changes |
-| `/security-review` | Scan staged/unstaged changes for security vulnerabilities |
 | `/terminal-setup` | Enable multiline input support (shift+enter and ctrl+enter) |
 
 ### Permissions
