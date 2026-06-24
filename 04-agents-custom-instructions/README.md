@@ -196,6 +196,8 @@ copilot --agent python-reviewer
 
 > 💡 **Switching agents**: You can switch to a different agent at any time by using `/agent` or `--agent` again. To return to the standard Copilot CLI experience, use `/agent` and select **no agent**.
 
+> 💡 **Agent mode is session-scoped**: The agent you select applies only to the current session. When you start a new session with `/new`, `/clear`, or by opening a fresh terminal, Copilot returns to its default mode — your agent selection does not carry over automatically. This means each session starts with a clean slate, which is a good habit to keep your work focused.
+
 ---
 
 # Going Deeper with Agents
@@ -433,6 +435,7 @@ Copilot will scan your project and create tailored instruction files. You can ed
 | `AGENTS.md` | Project root or nested | **Cross-platform standard** - works with Copilot and other AI assistants |
 | `.github/copilot-instructions.md` | Project | GitHub Copilot specific |
 | `.github/instructions/*.instructions.md` | Project | Granular, topic-specific instructions |
+| `~/.copilot/instructions/**/*.instructions.md` | User (all projects) | Personal instructions that apply everywhere, across all your repos |
 | `CLAUDE.md`, `GEMINI.md` | Project root | Supported for compatibility |
 
 > 🎯 **Just getting started?** Use `AGENTS.md` for project instructions. You can explore the other formats later as needed.
