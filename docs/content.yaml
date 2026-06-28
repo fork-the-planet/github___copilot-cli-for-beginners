@@ -124,7 +124,7 @@ chapters:
     bubble:
       lines:
       - Let's run the sample book app (you'll need Python installed).
-      - See five books? We're good to go!
+      - See 5 books? You're good to go!
       w: 900
       tx: 430
       ty: 180
@@ -187,6 +187,7 @@ chapters:
       ty: 330
     terminal:
     - '> Review @samples/book-app-project/book_app.py for code quality'
+    - '# You will learn more about @ and other ways to do reviews later!'
   - img: ch01-modes.png
     link: '#the-three-modes'
     alt: Professor Quill points at three icons - a map, a waiter, and a drive-through - while Pip thinks.
@@ -212,8 +213,8 @@ chapters:
       tx: 1250
       ty: 195
     terminal:
+    - 'copilot --plan       # Plan - map it out first. Can also use /plan.'
     - 'copilot              # Interactive - explore and iterate'
-    - 'copilot --plan       # Plan - map it out first'
     - 'copilot -p "..."     # Programmatic - one-shot answer'
   - img: ch01-commands.png
     link: '#essential-slash-commands'
@@ -264,7 +265,7 @@ chapters:
     bubbles:
     - lines:
       - Copilot is not a mind reader.
-      - Give it the right files!
+      - Tell it which files to focus on!
       w: 560
       tx: 470
       ty: 210
@@ -287,8 +288,8 @@ chapters:
     bubble:
       lines:
       - Type @ then a file or folder
-      - to point me right at the code.
-      w: 600
+      - to point Copilot right at the code.
+      w: 650
       tx: 600
       ty: 210
     terminal:
@@ -378,6 +379,7 @@ chapters:
       ty: 200
     terminal:
     - '> Why is this layout broken? @screenshot.png'
+    - '# You can also copy and paste an image into Copilot CLI!'
 - badge: Chapter 03
   doc: 03-development-workflows/README.md
   title: Development Workflows
@@ -796,3 +798,316 @@ chapters:
     terminal:
     - 'gh pr create     # open your pull request'
     - '# You finished the course!'
+
+# ---------------------------------------------------------------------------
+# art: project-specific image-generation config (cast, style, brand/logo,
+# per-panel logo placement, recolor rules). Consumed by the art tools
+# (gen2.js, relogo.js, recolor.js, render_logo.js); the site engine ignores it.
+# Swap these for a new project to retheme the whole comic - no script edits.
+# ---------------------------------------------------------------------------
+art:
+  style: Polished modern flat cartoon illustration with broad all-ages appeal (charming to both kids and adults), bold clean black outlines, smooth flat cell-shaded coloring, warm color palette of orange and teal with cream accents, simple uncluttered solid pastel background, gentle soft shadows, high-quality friendly webcomic style. Single panel. Keep the characters in the central band of the frame with generous empty space across the TOP for a caption and speech bubbles and clear space across the BOTTOM strip for a terminal bar; do not crop the characters' heads. ABSOLUTELY NO text, no words, no letters, no numbers, no captions and no speech bubbles anywhere in the image — illustration only.
+  scene_suffix: Clean composition with proper margins so every character is fully visible and not cropped.
+  size: 1536x1024
+  cast:
+    pip: "Pip is a friendly, clever cartoon fox who reads as a capable young-ADULT developer, NOT a baby or toddler: a confident upright stance with slightly taller, athletic grown-up proportions and a calmer mature face, bright orange fur, a cream-colored belly and muzzle, a big fluffy white-tipped tail, warm intelligent dark eyes, small triangular ears with black tips, wearing a cozy plain teal hoodie with absolutely NO markings, NO logo, NO emblem, NO symbol and NO text on it, and a pair of ordinary dark charcoal-gray denim jeans (long trousers) that fully cover his hips and legs, with his natural orange fox feet/paws showing below the jeans hems. Pip is always fully clothed with the hoodie on top and the dark jeans on the bottom (never bare-legged, never wearing only underwear). Pip is confident, expressive and approachable."
+    quill: "Professor Quill is a wise, friendly owl mentor who is clearly SHORTER and SMALLER than Pip, his head only reaching about Pip's shoulder or chest height: a small round compact body, soft brown and cream feathers, large round amber eyes behind small round spectacles, gentle tufted eyebrows, a calm knowing smile, wearing a cozy teal knitted vest with a small bow tie. Quill is scholarly, warm and patient like a seasoned senior engineer. Quill must be noticeably smaller in height than Pip."
+  presets:
+    pip:
+      characters:
+        - pip
+      join: Pip is the only character in the scene.
+    both:
+      characters:
+        - pip
+        - quill
+      join: Both characters are drawn in the exact same art style, line weight and cell-shading; Pip is clearly the taller one and Quill the shorter one.
+  logo:
+    asset: assets/copilot-logo-white.png
+    svg_path: M23.922 16.997C23.061 18.492 18.063 22.02 12 22.02 5.937 22.02.939 18.492.078 16.997A.641.641 0 0 1 0 16.741v-2.869a.883.883 0 0 1 .053-.22c.372-.935 1.347-2.292 2.605-2.656.167-.429.414-1.055.644-1.517a10.098 10.098 0 0 1-.052-1.086c0-1.331.282-2.499 1.132-3.368.397-.406.89-.717 1.474-.952C7.255 2.937 9.248 1.98 11.978 1.98c2.731 0 4.767.957 6.166 2.093.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086.23.462.477 1.088.644 1.517 1.258.364 2.233 1.721 2.605 2.656a.841.841 0 0 1 .053.22v2.869a.641.641 0 0 1-.078.256Zm-11.75-5.992h-.344a4.359 4.359 0 0 1-.355.508c-.77.947-1.918 1.492-3.508 1.492-1.725 0-2.989-.359-3.782-1.259a2.137 2.137 0 0 1-.085-.104L4 11.746v6.585c1.435.779 4.514 2.179 8 2.179 3.486 0 6.565-1.4 8-2.179v-6.585l-.098-.104s-.033.045-.085.104c-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.545-3.508-1.492a4.359 4.359 0 0 1-.355-.508Zm2.328 3.25c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm-5 0c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm3.313-6.185c.136 1.057.403 1.913.878 2.497.442.544 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.15.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.319-.862-2.824-1.025-1.487-.161-2.192.138-2.533.529-.269.307-.437.808-.438 1.578v.021c0 .265.021.562.063.893Zm-1.626 0c.042-.331.063-.628.063-.894v-.02c-.001-.77-.169-1.271-.438-1.578-.341-.391-1.046-.69-2.533-.529-1.505.163-2.347.537-2.824 1.025-.462.472-.705 1.179-.705 2.319 0 1.211.175 1.926.558 2.361.365.414 1.084.751 2.657.751 1.21 0 1.902-.394 2.344-.938.475-.584.742-1.44.878-2.497Z
+    deboss_prompt: Fill the masked circular area with the exact same smooth teal hoodie fabric as the surrounding cloth, matching its color, soft cell-shaded shading and gentle folds, so the chest becomes completely plain teal cloth with absolutely no logo, no emblem, no symbol, no robot, no face, no text and no markings of any kind.
+    skip:
+      - ch00-codespaces
+    placements:
+      ch00-welcome:
+        center:
+          - 640
+          - 555
+        width: 85
+      ch00-install:
+        center:
+          - 484
+          - 398
+        width: 80
+      ch00-login:
+        center:
+          - 555
+          - 485
+        width: 80
+      ch00-clone:
+        center:
+          - 595
+          - 605
+        width: 74
+      ch00-verify:
+        center:
+          - 414
+          - 418
+        width: 80
+      ch00-ready:
+        center:
+          - 580
+          - 424
+        width: 88
+      ch01-magic:
+        center:
+          - 540
+          - 560
+        width: 78
+      ch01-review:
+        center:
+          - 515
+          - 500
+        width: 70
+      ch01-modes:
+        center:
+          - 1162
+          - 598
+        width: 68
+      ch01-commands:
+        center:
+          - 730
+          - 560
+        width: 80
+      ch01-next:
+        center:
+          - 625
+          - 500
+        width: 76
+      pip-hero:
+        center:
+          - 605
+          - 480
+        width: 90
+      ch02-context:
+        center:
+          - 500
+          - 478
+        width: 76
+      ch02-atsyntax:
+        center:
+          - 430
+          - 452
+        width: 80
+      ch02-multifile:
+        center:
+          - 752
+          - 425
+        width: 82
+      ch02-sessions:
+        center:
+          - 502
+          - 476
+        width: 80
+      ch03-workflows:
+        center:
+          - 978
+          - 452
+        width: 80
+      ch03-review:
+        center:
+          - 540
+          - 395
+        width: 78
+      ch03-refactor:
+        center:
+          - 492
+          - 405
+        width: 74
+      ch03-debug:
+        center:
+          - 595
+          - 435
+        width: 74
+      ch03-test:
+        center:
+          - 430
+          - 440
+        width: 80
+      ch04-agents:
+        center:
+          - 490
+          - 415
+        width: 52
+      ch04-builtin:
+        center:
+          - 415
+          - 455
+        width: 80
+      ch04-custom:
+        center:
+          - 715
+          - 420
+        width: 78
+      ch04-instructions:
+        center:
+          - 390
+          - 430
+        width: 80
+      ch05-skills:
+        center:
+          - 510
+          - 425
+        width: 78
+      ch05-auto:
+        center:
+          - 460
+          - 435
+        width: 78
+      ch05-invoke:
+        center:
+          - 668
+          - 425
+        width: 78
+      ch05-create:
+        center:
+          - 500
+          - 468
+        width: 78
+      ch06-mcp:
+        center:
+          - 620
+          - 420
+        width: 80
+      ch06-github:
+        center:
+          - 500
+          - 425
+        width: 80
+      ch06-add:
+        center:
+          - 510
+          - 425
+        width: 80
+      ch06-workflow:
+        center:
+          - 430
+          - 410
+        width: 78
+      ch07-orchestra:
+        center:
+          - 550
+          - 435
+        width: 78
+      ch07-idea:
+        center:
+          - 470
+          - 435
+        width: 80
+      ch07-flow:
+        center:
+          - 470
+          - 430
+        width: 80
+      ch07-done:
+        center:
+          - 525
+          - 440
+        width: 84
+      ch00-codespaces:
+        center:
+          - 495
+          - 475
+        width: 72
+      ch02-memory:
+        center:
+          - 1222
+          - 448
+        width: 64
+      ch02-context-limit:
+        center:
+          - 520
+          - 405
+        width: 74
+      ch02-images:
+        center:
+          - 460
+          - 405
+        width: 76
+      ch05-vs:
+        center:
+          - 1215
+          - 470
+        width: 66
+      ch04-multiagent:
+        center:
+          - 320
+          - 470
+        width: 70
+  recolor:
+    hue:
+      - 2
+      - 40
+    sat_min: 110
+    val:
+      - 45
+      - 135
+    out_hue: 17
+    out_sat: 235
+    out_val:
+      - 0.5
+      - 0.95
+    targets:
+      ch00-welcome:
+        boxes:
+          - - 280
+            - 215
+            - 460
+            - 415
+      ch00-login:
+        boxes:
+          - - 770
+            - 310
+            - 895
+            - 465
+          - - 415
+            - 830
+            - 735
+            - 975
+      ch01-review:
+        boxes:
+          - - 675
+            - 525
+            - 805
+            - 705
+          - - 400
+            - 640
+            - 555
+            - 785
+      ch01-next:
+        boxes:
+          - - 335
+            - 235
+            - 485
+            - 395
+      ch01-commands:
+        boxes:
+          - - 775
+            - 645
+            - 890
+            - 765
+      pip-hero:
+        boxes:
+          - - 350
+            - 220
+            - 490
+            - 375
+        aggressive:
+          - box:
+              - 378
+              - 250
+              - 470
+              - 345
+            s_min: 60
+            v_min: 16
+            v_max: 135

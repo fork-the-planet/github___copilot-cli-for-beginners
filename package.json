@@ -9,8 +9,8 @@
     "generate:vhs": "node .github/scripts/generate-demos.js",
     "verify:gifs": "node .github/scripts/verify-gifs.js",
     "copy:content-engine": "node .github/scripts/copy-content-engine-files.js",
-    "build:comic": "node .github/scripts/build-comic.js",
-    "watch:comic": "node .github/scripts/watch-comic.js",
+    "build:visual-quickstart": "node .github/scripts/build-visual-quickstart.js",
+    "watch:visual-quickstart": "node .github/scripts/watch-visual-quickstart.js",
     "generate:demos": "npm run create:tapes && npm run generate:vhs && npm run verify:gifs",
     "release": "npm run generate:demos",
     "release:ci": "npm run generate:headers"

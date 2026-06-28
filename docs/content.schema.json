@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/github/copilot-cli-for-beginners/comic-content.schema.json",
   "title": "Comic site content",
-  "description": "Content for the comic-strip-site engine (build_site.py). This file is the source of truth for every editable word; the engine hard-codes none.",
+  "description": "Content for the visual-quickstart-generator engine (build_site.js). This file is the source of truth for every editable word; the engine hard-codes none.",
   "type": "object",
   "additionalProperties": false,
   "required": ["site", "home", "footer_html", "chapters"],
@@ -18,9 +18,79 @@
       "description": "Ordered list of chapters; index 0 -> chapter-00.html, etc.",
       "minItems": 1,
       "items": { "$ref": "#/definitions/chapter" }
-    }
+    },
+    "art": { "$ref": "#/definitions/art" }
   },
   "definitions": {
+    "art": {
+      "type": "object",
+      "description": "Project image-generation config (cast, style, brand/logo, per-image logo placement, recolor rules). Consumed by the art tools (gen2.js, relogo.js, recolor.js, render_logo.js); the site engine ignores it.",
+      "additionalProperties": true,
+      "properties": {
+        "style": { "type": "string", "description": "Shared STYLE block prefixed to every generation prompt (art style, palette, reserved top/bottom bands, 'no text')." },
+        "scene_suffix": { "type": "string", "description": "Phrase appended after the cast in every prompt (e.g. 'Clean composition with proper margins...')." },
+        "size": { "type": "string", "description": "Generated image size, e.g. '1536x1024' (must match the engine viewBox)." },
+        "cast": {
+          "type": "object",
+          "description": "Map of character key -> fixed spec paragraph, reused verbatim in every prompt for consistency.",
+          "additionalProperties": { "type": "string" }
+        },
+        "presets": {
+          "type": "object",
+          "description": "Map of preset key (gen2.js's first arg) -> which characters to include + a joining phrase.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "characters": { "type": "array", "items": { "type": "string" }, "description": "Cast keys to include, in order." },
+              "join": { "type": "string", "description": "Phrase appended after the character specs (e.g. relative sizing notes)." }
+            }
+          }
+        },
+        "logo": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Brand logo: asset path, SVG path for render_logo.js, deboss inpaint prompt, skip list, and per-image placement.",
+          "properties": {
+            "asset": { "type": "string", "description": "Logo PNG path relative to the working base (skill or VISUAL_QUICKSTART_BASE)." },
+            "svg_path": { "type": "string", "description": "SVG path data for render_logo.js to rasterize the white logo." },
+            "deboss_prompt": { "type": "string", "description": "Inpaint prompt used by relogo.js clean to remove a baked-in emblem." },
+            "down": { "type": "number", "description": "Optional extra vertical nudge applied to every stamped logo." },
+            "skip": { "type": "array", "items": { "type": "string" }, "description": "Image basenames to publish with no logo (plain garment)." },
+            "placements": {
+              "type": "object",
+              "description": "Map of image basename -> { center: [x,y], width } in 1536x1024 pixels.",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "center": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+                  "width": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "recolor": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "HSV recolor rules (0-255 scale) used by recolor.js to fix inconsistent paw/garment colors.",
+          "properties": {
+            "hue": { "type": "array", "items": { "type": "number" }, "description": "[min,max] selected hue window." },
+            "sat_min": { "type": "number" },
+            "val": { "type": "array", "items": { "type": "number" }, "description": "[min,max] selected value window." },
+            "out_hue": { "type": "number" },
+            "out_sat": { "type": "number" },
+            "out_val": { "type": "array", "items": { "type": "number" }, "description": "[lo,hi] output value range (0-1) across the shading." },
+            "targets": {
+              "type": "object",
+              "description": "Map of image basename -> { boxes: [[x0,y0,x1,y1]...], aggressive?: [{box, s_min, v_min, v_max}] }.",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    },
     "site": {
       "type": "object",
       "description": "Site-wide chrome text and assets (everything not tied to a specific chapter/panel).",

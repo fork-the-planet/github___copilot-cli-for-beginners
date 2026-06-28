@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Watch visual-quickstart/content.yaml and rebuild the comic site on every save.
+ * Watch docs/content.yaml and rebuild the visual quickstart site on every save.
  *
  * Usage:
- *   npm run watch:comic
+ *   npm run watch:visual-quickstart
  *
  * Leave this running while you edit content.yaml. Each time you save the file,
- * the comic HTML/CSS is regenerated automatically (same as `npm run build:comic`).
+ * the visual quickstart HTML/CSS is regenerated automatically (same as `npm run build:visual-quickstart`).
  * Press Ctrl+C to stop.
  *
  * Zero dependencies: uses Node's built-in fs.watch. It watches the directory and
@@ -19,9 +19,9 @@ const { watch, existsSync } = require('fs');
 const { join } = require('path');
 
 const repoRoot = join(__dirname, '..', '..'); // .github/scripts -> repo root
-const docsDir = join(repoRoot, 'visual-quickstart');
+const docsDir = join(repoRoot, 'docs');
 const contentFile = join(docsDir, 'content.yaml');
-const buildScript = join(__dirname, 'build-comic.js');
+const buildScript = join(__dirname, 'build-visual-quickstart.js');
 const WATCHED = 'content.yaml';
 const DEBOUNCE_MS = 200;
 
