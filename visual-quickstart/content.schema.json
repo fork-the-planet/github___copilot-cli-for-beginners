@@ -40,6 +40,9 @@
         "open_section_label": { "type": "string", "description": "Book-icon deep-link label (aria-label + tooltip)." },
         "copy_command_label": { "type": "string", "description": "Prefix for terminal copy-button aria-labels, e.g. 'Copy command'." },
         "progress_label": { "type": "string", "description": "Banner progress-bar aria label. {n} and {total} are substituted." },
+        "skip_label": { "type": "string", "description": "Visually-hidden skip-to-content link text." },
+        "new_tab_label": { "type": "string", "description": "Appended to the book-icon link aria-label to warn it opens a new tab." },
+        "copied_label": { "type": "string", "description": "Screen-reader status announced after a terminal command is copied." },
         "nav": { "$ref": "#/definitions/nav" }
       }
     },
@@ -52,7 +55,9 @@
         "prev": { "type": "string", "description": "Full 'previous' label (wide screens)." },
         "prev_short": { "type": "string", "description": "Short 'previous' label (narrow screens)." },
         "next": { "type": "string", "description": "Full 'next' label (wide screens)." },
-        "next_short": { "type": "string", "description": "Short 'next' label (narrow screens)." }
+        "next_short": { "type": "string", "description": "Short 'next' label (narrow screens)." },
+        "aria": { "type": "string", "description": "Accessible name for the top nav landmark." },
+        "aria_bottom": { "type": "string", "description": "Accessible name for the repeated bottom nav landmark (must differ from 'aria')." }
       }
     },
     "home": {

@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body class="home">
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="banner-wrap">
   <div class="banner home-banner">
     <div class="b-copy">
@@ -35,10 +36,10 @@
     <img class="home-av" src="assets/img/pip-avatar-hat.png?v=8444f7c2" alt="Pip the fox mascot waving" width="170" height="170"/>
   </div>
 </header>
-<main class="home-main">
+<main id="main" class="home-main">
   <figure class="cell home-intro">
     <figcaption class="cap">Meet Pip and Professor Quill - pick a chapter below to get started!</figcaption>
-    <svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip the fox waves hello beside Professor Quill the owl at a cozy desk with a laptop." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch00-welcome.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="834" y="96" width="624" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="834,160 773,202 834,220" fill="#ffffff"/><line x1="834" y1="160" x2="834" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="834" y1="160" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="834" y1="220" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1146" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Hi, I&#x27;m Pip! Ready to learn</text><text x="1146" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">about GitHub Copilot CLI?</text></g><g><rect x="780" y="312" width="690" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1101,452 1135,506 1161,452" fill="#ffffff"/><line x1="1101" y1="452" x2="1161" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="1101" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1161" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1125" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Greetings! I&#x27;m Professor Quill.</text><text x="1125" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">I explain the &quot;why&quot; behind each step.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg>
+    <svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip the fox waves hello beside Professor Quill the owl at a cozy desk with a laptop. Speech bubble: “Hi, I&#x27;m Pip! Ready to learn about GitHub Copilot CLI?”. Speech bubble: “Greetings! I&#x27;m Professor Quill. I explain the &quot;why&quot; behind each step.”." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch00-welcome.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="834" y="96" width="624" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="834,160 773,202 834,220" fill="#ffffff"/><line x1="834" y1="160" x2="834" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="834" y1="160" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="834" y1="220" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1146" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Hi, I&#x27;m Pip! Ready to learn</text><text x="1146" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">about GitHub Copilot CLI?</text></g><g><rect x="780" y="312" width="690" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1101,452 1135,506 1161,452" fill="#ffffff"/><line x1="1101" y1="452" x2="1161" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="1101" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1161" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1125" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Greetings! I&#x27;m Professor Quill.</text><text x="1125" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">I explain the &quot;why&quot; behind each step.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg>
   </figure>
   <div class="intro-cta"><a class="cta" href="chapter-00.html">Get Started!</a></div>
   <details class="chapter-select">
@@ -83,6 +84,11 @@
   window.addEventListener('resize',position);
   document.addEventListener('click',function(e){
     if(d.open&&!d.contains(e.target))d.removeAttribute('open');
+  });
+  d.addEventListener('keydown',function(e){
+    if((e.key==='Escape'||e.key==='Esc')&&d.open){
+      d.removeAttribute('open'); sum.focus();
+    }
   });
 })();
 </script>

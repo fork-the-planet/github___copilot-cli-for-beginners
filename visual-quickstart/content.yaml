@@ -22,12 +22,17 @@ site:
   open_section_label: Read this section in the full course  # book-icon link (aria + tooltip)
   copy_command_label: Copy command                      # prefix for terminal copy-button aria-labels
   progress_label: 'Course progress: chapter {n} of {total}'  # banner progress bar (aria); {n}/{total} are filled in
+  skip_label: Skip to main content                      # visually-hidden skip-to-content link
+  new_tab_label: ' (opens in a new tab)'                # appended to book-icon aria-label (new-tab warning)
+  copied_label: Copied!                                 # screen-reader announcement after a command is copied
   nav:
     home: Home
     prev: Previous Chapter
     prev_short: Prev
     next: Next Chapter
     next_short: Next
+    aria: Chapter                                        # accessible name for the top nav landmark
+    aria_bottom: Chapter (bottom)                        # accessible name for the repeated bottom nav landmark
 
 home:
   title_html: GitHub Copilot CLI<br>for Beginners
