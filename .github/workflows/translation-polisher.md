@@ -107,7 +107,11 @@ Do not edit:
 
 ## Required process
 
-1. Identify the target pull request number and head branch.
+> **Shell tooling constraint:** Only the `gh`, `git`, and `node` commands are available in this environment. Do **not** call `python`, `python3`, `sed`, `awk`, or `grep` pipelines — they are not permitted and will fail with a permission error. Filter and process command output yourself instead of piping through unsupported tools.
+
+1. Identify the target pull request number and head branch, then list the files the pull request changed. Use only the available shell tools:
+   - List changed files with `git diff --name-only origin/main...HEAD` (the branch is checked out with full history) or `gh pr diff <number> --name-only`.
+   - From that output, select only files matching `translations/**/*.md`, and ignore `translations/*/.github/**` and `translations/*/samples/**`. Do this selection yourself from the file list rather than piping through `grep`/`sed`.
 2. Compare each changed translated Markdown file with its corresponding English source file.
    - Example: compare `translations/es/README.md` with `README.md`.
    - Example: compare `translations/es/03-development-workflows/README.md` with `03-development-workflows/README.md`.
