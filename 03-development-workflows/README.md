@@ -582,7 +582,7 @@ copilot
 
 <a id="workflow-5-git-integration"></a>
 <details>
-<summary><strong>Workflow 5: Git Integration</strong> - Commit messages, PR descriptions, /pr, /delegate, and /diff</summary>
+<summary><strong>Workflow 5: Git Integration</strong> - Commit messages, PR descriptions, /pr, /delegate, /diff, and /branch</summary>
 
 <img src="assets/git-integration-swimlane-single.png" alt="Git Integration workflow: stage changes, generate message, commit, create PR." width="800"/>
 
@@ -691,7 +691,7 @@ This is great for well-defined tasks you want completed while you focus on other
 
 ### Using /diff to Review Session Changes
 
-The `/diff` command shows all changes made during your current session. Use this slash command to see a visual diff of everything Copilot CLI has modified before you commit.
+The `/diff` command shows all changes made during your current session. Use this slash command to see a visual diff of everything Copilot CLI has modified before you commit. It also works in folders that aren't git repositories.
 
 ```bash
 copilot
@@ -702,6 +702,28 @@ copilot
 # Shows a visual diff of all files modified in this session
 # Great for reviewing before committing
 ```
+
+### Branching Your Session with /branch or /fork
+
+Sometimes you want to explore two different approaches to a problem without losing your original conversation. The `/branch` command (also available as `/fork`) creates a copy of your current session so you can try a different direction and then compare results.
+
+```bash
+copilot
+
+> Fix the find_by_author function to support partial matches
+
+# You want to try a different approach — branch first!
+> /branch
+
+# Now you're in a new session copy. Try your alternative approach:
+> Fix find_by_author using a different regex-based strategy
+
+# If you don't like the result, switch back to your original session using /session
+```
+
+> 💡 **`/branch` and `/fork` are the same**: Both commands do identical things. `/branch` was added as a more intuitive name. Use whichever makes more sense to you.
+
+> 💡 **When to branch**: Branching is great when you're unsure which approach is better and want to keep both options open.
 
 </details>
 
